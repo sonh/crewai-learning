@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FastAPI Demo</title>
+        <script>
+            async function sendData() {
+                let inputText = document.getElementById("textInput").value;
+                let responseBox = document.getElementById("responseBox");
+
+                let response = await fetch("/api/process", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: inputText })
+                });
+
+                let data = await response.json();
+                responseBox.innerText = data.response;
+            }
+        </script>
+    </head>
+    <body>
+        <h2>FastAPI Text Processor</h2>
+        <textarea id="textInput" rows="4" cols="50" placeholder="Enter text here..."></textarea><br>
+        <button onclick="sendData()">Submit</button>
+        <h3>Response:</h3>
+        <p id="responseBox"></p>
+    </body>
+    </html>
