@@ -33,19 +33,21 @@ teaching_support_task = Task(
         Try to answer the {question} yourself first to get a answer.
     """,
     expected_output="""
-        A recap of the question the answer for it
+        A recap of the question the answer for it.
+        The first result of the question, no need to explain.
     """,
     agent=teaching_assistant
 )
 
 math_resolving_task = Task(
     description="""
-        Try to resolve the {question} by yourself, then verify the first answer/conclusion.
+        Try to resolve the {question} by yourself, then verify with the first result.
         Give the A step by step instruction.
     """,
     expected_output="""
-        A step by step instruction to follow the final answer to resolve the {question}, 
-        Keep them short, concise, easy to understanding, less than 200 words, the lesser the better.
+        Show the result
+        Must have a step by step instruction show how to resolve it.
+        Keep them short, concise, easy to understanding, the lesser the better.
     """,
     agent=math_teacher,
     context=[teaching_support_task]
