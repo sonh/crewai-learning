@@ -14,6 +14,6 @@ pip3 install -r requirements.txt
 ## Run App
 Execute
 ```bash
-OPENAI_API_KEY=input python3 main.py
+OPENAI_API_KEY=your_key python3 main.py
 ```
 Open http://0.0.0.0:8000/ to interact
