@@ -1,7 +1,11 @@
 ## Set Up
 Create virtual environment first
 ```bash
-python3 -m venv myenv
+python3 -m venv venv
+```
+Enable virtual env
+```bash
+source venv/bin/activate
 ```
 Install dependencies
 ```bash
