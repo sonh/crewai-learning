@@ -9,10 +9,11 @@ source venv/bin/activate
 ```
 Install dependencies
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 ## Run App
 Execute
 ```bash
 OPENAI_API_KEY=input python3 main.py
 ```
+Open http://0.0.0.0:8000/ to interact
