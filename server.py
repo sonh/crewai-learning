@@ -16,12 +16,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class InputData(BaseModel):
     text: str
 
+
 @app.post("/api/process")
 async def process_text(data: InputData):
-    """API endpoint to receive text input and return a processed response."""
     question_answer_crew = Crew(
         agents=[teaching_assistant, math_teacher],
         tasks=[teaching_support_task, math_resolving_task],
@@ -32,8 +33,8 @@ async def process_text(data: InputData):
     result = question_answer_crew.kickoff(inputs={
         'question': data.text,
     })
-    #response_text = f"Received: {data.text.upper()}"  # Example processing
     return {"response": result.raw}
+
 
 @app.get("/", response_class=HTMLResponse)
 async def serve_page():
@@ -46,12 +47,11 @@ async def serve_page():
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FastAPI Text Processor</title>
         <style>
-            button {
-                font-size: 14px;
+            body {
+                padding-left: 48px;
             }
         </style>
         <script>
-
             async function sendData() {
                 let inputText = document.getElementById("textInput").value;
                 let responseBox = document.getElementById("responseBox");
@@ -78,8 +78,9 @@ async def serve_page():
         <h2>Input question</h2>
 
         <textarea id="textInput" rows="24" cols="240" placeholder="Enter question here..." oninput="updatePreview()"></textarea><br>
+        <br/>
         <button onclick="sendData()">Submit</button>
-
+        <br/>
         <h3>Response:</h3>
         <p id="responseBox"></p>
     </body>
